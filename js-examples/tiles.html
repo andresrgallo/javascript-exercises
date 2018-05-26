@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+          background-color: red;
+          height: 100px;
+          width: 25%;
+          float: left;
+        }
+      </style>
+</head>
+<body>
+<script>
+    for(i = 0; i < 8; i++){
+        let myDivs = document.createElement('div');
+        document.body.appendChild(myDivs)
+    }
+    function rnd(n){
+        return Math.floor(Math.random()*n)
+    }
+    function chgColor(){
+        return 'rgba(' + rnd(255) + "," + rnd(255) + "," + rnd(255) + ')';
+        // return newColor;
+    }
+    let allDivs = document.querySelectorAll('div');
+    for (i = 0; i < allDivs.length; i++){
+        allDivs[i].onclick = function(e){
+            e.target.style.backgroundColor = chgColor();
+        }
+    }
+
+</script>
+</body>
+</html>
