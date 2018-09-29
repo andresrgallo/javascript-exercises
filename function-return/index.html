@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function library example</title>
+  <style>
+    input {
+      font-size: 2em;
+      margin: 10px 1px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <input class="numberInput" type="text">
+  <p></p>
+  
+  <script>
+    var input = document.querySelector('.numberInput');
+    var para = document.querySelector('p');
+function squared(num) {
+  return num*num;
+}
+
+function cubed(num) {
+  return num*num*num;
+}
+
+function factorial(num) {
+  var x = num;
+  while (x > 1) {
+    num *= x-1;
+    x--;
+  }
+  return num;
+}
+
+input.addEventListener('change', calculations);
+
+function calculations () {
+  var num = input.value
+  if (isNaN(num)) {
+    para.textContent = 'You need to enter a number';
+  } else {
+  var ul = document.createElement('ul');
+  var li = document.createElement('li');
+  
+  var square = squared(num);
+  var cube = cubed(num);
+  var factor = factorial(num);
+
+  para.textContent = `For a value of ${num} the squared result is ${square}, the cubed is ${cube} and the factorial is ${factor}`
+  }
+}
+
+
+  </script>
+</body>
+</html>

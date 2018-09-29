@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1>Verse selected</h1>
+  <div>
+    <form action="">
+      <label for="select-verse">Make a selection: &nbsp;
+        <select id="selection" name="select-value">
+          <option value="verseA">Verse 1</option>
+          <option value="verseB">Verse 2</option>
+          <option value="verseC">Verse 3</option>
+        </select>
+      </label>
+    </form>
+  </div>
+  <p></p>
+  <script>
+  var para = document.querySelector("p");
+  var selected = document.querySelector("select");
+  selected.addEventListener('change', reqVerse);
+
+  function reqVerse() {
+      var file = selected.value + ".txt";
+    showVerse(file);
+  };  
+//  function showVerse(file) {
+//    var req = new XMLHttpRequest();
+//    req.responseType = 'text';
+//    req.open('GET', file);
+//    req.send();
+//    req.onload = function () {
+//    para.textContent = req.response;
+//    };
+//  }
+    // With Fetch API
+    function showVerse(file) {
+      fetch(file).then(function(response){
+        response.text().then(function(text) {
+          para.textContent = text
+        });
+      });
+    }
+  showVerse("verseB.txt");  
+  </script>
+</body>
+</html>
